@@ -3,8 +3,6 @@
 
 #include "consoleapp.hpp"
 
-// TODO: Add the solved puzzle functions to argument processing
-
 int main(int argc, char** argv)
 {
 	auto op_args { capp::proc_args(argc, argv) };

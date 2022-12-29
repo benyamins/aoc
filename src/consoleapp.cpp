@@ -67,14 +67,14 @@ std::optional<capp::Args> capp::proc_args(int argc, char** argv)
 
 std::unordered_map<int, std::unordered_map<int, std::function<void(std::string)>>>
 puzzle_funcs {
-    {1, { {1, puzzle_01_01} }},
-    {1, { {2, puzzle_01_02} }}
+    {
+        1, { {1, puzzle_01_01}, {2, puzzle_01_02} }
+    }
 };
 
 
 int capp::call_puzzle_result(int day, int puzzle_number, std::string input_file)
 {
-    fmt::print("day: {}, pn: {}", day, puzzle_number);
     puzzle_funcs[day][puzzle_number](input_file);
     return 0;
 }
