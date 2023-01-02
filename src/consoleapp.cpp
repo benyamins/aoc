@@ -19,16 +19,13 @@ R"(
 puzzle completions in `c++`
 
 usage:
-    aoc [ day ] [ puzzle-number ]
+    aoc [ day ] [ puzzle-number ] [ input-file ]
     aoc --help
 )"
 };
 
 
-void capp::print_help()
-{
-	fmt::print("{}", HELP);
-}
+void capp::print_help() { fmt::print("{}", HELP); }
 
 
 std::optional<capp::Args> capp::proc_args(int argc, char** argv)
@@ -69,12 +66,26 @@ std::unordered_map<int, std::unordered_map<int, std::function<void(std::string)>
 puzzle_funcs {
     {
         1, { {1, puzzle_01_01}, {2, puzzle_01_02} }
+    },
+    {
+        2, { {1, puzzle_02_01}, {2, puzzle_02_02} }
+    },
+    {
+        3, { {1, puzzle_03_01}, {2, puzzle_03_02} }
+    },
+    {
+        4, { {1, puzzle_04_01}, {2, puzzle_04_02} }
     }
 };
 
 
 int capp::call_puzzle_result(int day, int puzzle_number, std::string input_file)
 {
+    if (!puzzle_funcs.contains(day) || !puzzle_funcs[day].contains(puzzle_number))
+    {
+        fmt::print("Day or puzzle number doesn't exist.\n");
+        return 1;
+    }
     puzzle_funcs[day][puzzle_number](input_file);
     return 0;
 }

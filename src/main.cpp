@@ -12,7 +12,5 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-    capp::call_puzzle_result(args.day, args.puzzle_number, args.input_file);
-
-    return 0;
+    return capp::call_puzzle_result(args.day, args.puzzle_number, args.input_file);
 }

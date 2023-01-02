@@ -1,0 +1,31 @@
+[
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
+  "file": "src/main.cpp"
+},
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/consoleapp.cpp.o", "src/consoleapp.cpp"],
+  "file": "src/consoleapp.cpp"
+},
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/helper.cpp.o", "src/helper.cpp"],
+  "file": "src/helper.cpp"
+},
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/puzzle_01.cpp.o", "src/puzzle_01.cpp"],
+  "file": "src/puzzle_01.cpp"
+},
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/puzzle_02.cpp.o", "src/puzzle_02.cpp"],
+  "file": "src/puzzle_02.cpp"
+},
+{
+  "directory": "/home/antilles/dev/lrn/advent-of-code/22/cpp",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-I", "/home/antilles/.xmake/packages/f/fmt/9.1.0/d363b063d73b40728217e45838c2553c/include", "-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion", "-o", "build/.objs/aoc/linux/x86_64/debug/src/puzzle_03.cpp.o", "src/puzzle_03.cpp"],
+  "file": "src/puzzle_03.cpp"
+}]

@@ -4,9 +4,9 @@ add_rules("mode.debug", "mode.release")
 add_requires("fmt")
 
 if is_mode("debug") then
-	add_cxxflags("-std=c++20", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion")
+    add_cxxflags("-std=c++23", "-Wall", "-pedantic", "-pedantic-errors", "-Wconversion")
 else
-	add_cxxflags("-std=c++20", "-Wall", "-Werror", "-pedantic", "-pedantic-errors", "-Wconversion", "-Wextra")
+    add_cxxflags("-std=c++23", "-Wall", "-Werror", "-pedantic", "-pedantic-errors", "-Wconversion", "-Wextra")
 end
 
 target("aoc")
@@ -18,4 +18,7 @@ target("aoc")
 	add_files("src/consoleapp.cpp")
     add_files("src/helper.cpp")
     add_files("src/puzzle_01.cpp")
+    add_files("src/puzzle_02.cpp")
+    add_files("src/puzzle_03.cpp")
+    add_files("src/puzzle_04.cpp")
 	add_packages("fmt")
