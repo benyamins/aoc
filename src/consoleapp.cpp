@@ -5,6 +5,7 @@
 #include <functional>
 
 #include <fmt/core.h>
+#include <fmt/ranges.h>
 
 #include "consoleapp.hpp"
 #include "puzzle.hpp"
@@ -86,7 +87,15 @@ int capp::call_puzzle_result(int day, int puzzle_number, std::string input_file)
         fmt::print("Day or puzzle number doesn't exist.\n");
         return 1;
     }
-    puzzle_funcs[day][puzzle_number](input_file);
+	try
+	{
+		puzzle_funcs[day][puzzle_number](input_file);
+	}
+	catch( const std::invalid_argument& e )
+	{
+		fmt::print("File doesn't exists or can't be used:\n{}\n", e.what());
+		return 1;
+	}
     return 0;
 }
 
