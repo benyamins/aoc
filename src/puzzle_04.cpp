@@ -50,6 +50,7 @@ void puzzle_04_02(std::string input_file)
 		{
 			pairs_intersect += 1;
 		}
+
     }
 
     fmt::print("solution 04 02: {}\n", pairs_intersect);

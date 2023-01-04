@@ -1,5 +1,7 @@
 #include <fstream>
 #include <filesystem>
+#include <ranges>
+#include <string_view>
 
 #include "helper.hpp"
 
@@ -23,19 +25,29 @@ std::vector<std::string> str_split(const std::string& str, const std::string& sp
 {
 	std::vector<std::string> split {};
 	
-	std::size_t start_pos { 0 };
-	std::size_t sep_pos { str.find(split_on, start_pos) };
-	while (true)
-	{
-		split.push_back(str.substr(start_pos, sep_pos));
-		if (sep_pos == std::string::npos)
-			break;
-		else
-		{
-			start_pos = sep_pos + 1;
-			sep_pos = str.find(split_on, start_pos);
-		}
-	}
+	//std::size_t start_pos { 0 };
+	//std::size_t sep_pos { str.find(split_on, start_pos) };
+	//while (true)
+	//{
+	//    split.push_back(str.substr(start_pos, sep_pos));
+	//    if (sep_pos == std::string::npos)
+	//        break;
+	//    else
+	//    {
+	//        start_pos = sep_pos + 1;
+	//        sep_pos = str.find(split_on, start_pos);
+	//    }
+	//}
+
+    auto split_view = str
+        | std::ranges::views::split(split_on)
+        | std::ranges::views::transform(
+            [](auto&& s) { return std::string_view{s}; }
+        );
+
+    // TODO: add logic to ranges
+    for (const auto& e : split_view)
+        split.push_back(std::string{e});
 
 	return split;
 }
