@@ -45,10 +45,9 @@ void puzzle_04_02(std::string input_file)
 		int left_elf_from { std::stoi(str_split(elf_pair_split[1], "-")[0]) };
 		int left_elf_to { std::stoi(str_split(elf_pair_split[1], "-")[1]) };
 
-		if ((right_elf_to >= left_elf_from) ||
-			(left_elf_to <= right_elf_from))
+		if ((right_elf_to >= left_elf_from && right_elf_to <= left_elf_to)
+				|| (left_elf_to >= right_elf_from && left_elf_to <= right_elf_to))
 		{
-			fmt::print("intersect! {} {} {} {}\n", right_elf_from, right_elf_to, left_elf_from, left_elf_to);
 			pairs_intersect += 1;
 		}
     }
