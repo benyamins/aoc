@@ -1,30 +1,80 @@
-mod solutions;
 mod common;
+mod solutions;
 use crate::common::Solution;
 
 use std::env;
+use std::path;
 
 fn main() {
+    let input_data_path = path::Path::new("./data/");
 
-    let cmd_args = env::args();
+    if !input_data_path.exists() {
+        eprintln!("Data path - ie folder containing input files doesn't exists");
+        return;
+    }
 
-    println!("{:?}", cmd_args);
+    let args: Vec<String> = env::args().collect();
 
-    select_day("1", "1").expect("what..");
+    if args.len() < 3 {
+        println!("not enough args..");
+        return;
+    }
+
+    let day = match &args.get(1) {
+        Some(val) => val.to_string(),
+        _ => {
+            eprintln!("No val!");
+            return;
+        }
+    };
+
+    let n_problem = match args.get(2) {
+        Some(val) => val.to_string(),
+        _ => {
+            eprintln!("No n_problem val!");
+            return;
+        }
+    };
+
+    let input_file_path = format!(
+        "./data/input_{}.txt",
+        if day.len() > 1 {
+            day.clone()
+        } else {
+            format!("0{}", day.clone())
+        }
+    );
+
+    println!("Using content from file: `{}`", input_file_path);
+
+    let input_content = match std::fs::read_to_string(input_file_path) {
+        Ok(input) => input,
+        Err(error) => {
+            eprintln!("Error reading the file!: {:?}", error);
+            return;
+        }
+    };
+
+    match select_day(&day, &n_problem, input_content) {
+        None => {
+            println!("The convination of day and problem number doesn't exist in the program...")
+        }
+        _ => return,
+    }
 }
 
-fn select_day(day: &str, solution: &str) -> Option<()>{
+fn select_day(day: &str, solution: &str, input_content: String) -> Option<()> {
     let (n_day, n_solution): (u16, u16) = match (day.parse(), solution.parse()) {
         (Ok(n_day), Ok(n_solution)) => (n_day, n_solution),
         errors => {
             println!("Error while parsing!: `{:?}`", errors);
-            return None
+            return None;
         }
     };
 
     match n_day {
-        1 => solutions::Day01::solve(n_solution),
-        _ => todo!()
+        1 => solutions::Day01::solve(n_solution, input_content),
+        _ => todo!(),
     }
     Some(())
 }
