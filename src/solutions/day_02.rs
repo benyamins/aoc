@@ -32,15 +32,21 @@ impl Solution for Day02 {
             for element in game_details {
                 if element.starts_with("blue") {
                     if let Some(val) = cube_colors.get_mut("blue") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 } else if element.starts_with("green") {
                     if let Some(val) = cube_colors.get_mut("green") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 } else if element.starts_with("red") {
                     if let Some(val) = cube_colors.get_mut("red") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 }
                 num = match element.parse() {
@@ -78,15 +84,21 @@ impl Solution for Day02 {
             for element in game_details {
                 if element.starts_with("blue") {
                     if let Some(val) = cube_colors.get_mut("blue") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 } else if element.starts_with("green") {
                     if let Some(val) = cube_colors.get_mut("green") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 } else if element.starts_with("red") {
                     if let Some(val) = cube_colors.get_mut("red") {
-                        if *val < num { *val = num };
+                        if *val < num {
+                            *val = num
+                        };
                     }
                 }
                 num = match element.parse() {
