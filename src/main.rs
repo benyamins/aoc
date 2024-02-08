@@ -28,7 +28,7 @@ fn main() {
         }
     };
 
-    let n_problem = match args.get(2) {
+    let n_problem = match &args.get(2) {
         Some(val) => val.to_string(),
         _ => {
             eprintln!("No n_problem val!");
@@ -74,6 +74,7 @@ fn select_day(day: &str, solution: &str, input_content: String) -> Option<()> {
 
     match n_day {
         1 => solutions::Day01::solve(n_solution, input_content),
+        2 => solutions::Day02::solve(n_solution, input_content),
         _ => todo!(),
     }
     Some(())
