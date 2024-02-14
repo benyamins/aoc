@@ -58,14 +58,10 @@ impl Solution for Day03 {
             }
         }
 
-        // schematic_numbers.iter().for_each(|e| println!("{:?}", e));
-        // println!("{:?}", adjacent_positions);
-
         for part_number in schematic_numbers {
             if adjacent_positions.contains(&part_number.max_pos)
                 || adjacent_positions.contains(&part_number.min_pos)
             {
-                // println!("{:?}", part_number);
                 engine_number += part_number.number;
             }
         }
@@ -119,10 +115,6 @@ impl Solution for Day03 {
             }
         }
 
-        // schematic_numbers.iter().for_each(|e| println!("{:?}", e));
-        // println!("{:?}", adjacent_positions);
-        // schematic_numbers.iter().for_each(|e| println!("{:?}", e));
-
         let mut engine_numbers: Vec<usize> = vec![];
         let mut sum_gear_ratio: usize = 0;
         for gear_positions in adjacent_positions {
@@ -136,9 +128,7 @@ impl Solution for Day03 {
                     }
                 }
             }
-            // println!("{:?}", engine_numbers);
             if engine_numbers.len() == 2 {
-                // println!("pos: {:?}", gear_positions);
                 sum_gear_ratio += engine_numbers[0] * engine_numbers[1];
             }
             engine_numbers.clear();
