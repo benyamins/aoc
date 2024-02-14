@@ -1,3 +1,4 @@
+#![feature(iter_collect_into)]
 mod common;
 mod solutions;
 use crate::common::Solution;
@@ -75,7 +76,8 @@ fn select_day(day: &str, solution: &str, input_content: String) -> Option<()> {
     match n_day {
         1 => solutions::Day01::solve(n_solution, input_content),
         2 => solutions::Day02::solve(n_solution, input_content),
-        _ => todo!(),
+        3 => solutions::Day03::solve(n_solution, input_content),
+        _ => todo!("NEED TO ADD THE DAY IN MAIN.rs you silly!"),
     }
     Some(())
 }

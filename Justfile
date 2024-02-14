@@ -13,4 +13,4 @@ test TEST-NAME:
 	cargo test {{ TEST-NAME }} -- --nocapture
 
 get-input URL:
-	curl -H "Session: $SESSION" -o ./data/input_01.txt {{ URL }}
+	curl.exe -H "Session: $env:SESSION" -o ./data/input.txt {{ URL }}
