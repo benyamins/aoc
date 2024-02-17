@@ -1,5 +1,3 @@
-use std::usize;
-
 use crate::common::Solution;
 use crate::solutions::Day03;
 
