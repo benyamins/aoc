@@ -47,7 +47,7 @@ impl Solution for Day04 {
             .position(|s| s == "|")
             .unwrap();
         let mut card_and_matches: Vec<(u32, u32)> = vec![];
-        let mut card_instances: HashMap<u32, u32> = HashMap::new();
+        let mut scratchcard_totals: HashMap<u32, u32> = HashMap::new();
         for (i, line) in input.lines().enumerate() {
             let card: Vec<_> = line.split_whitespace().collect();
             let (winning_nums, your_nums) = card.split_at(card_delimitr_pos);
@@ -63,24 +63,45 @@ impl Solution for Day04 {
                 if your_nums.contains(&e) {
                     n_matches += 1
                 };
-                card_instances.insert(card_number, 1);
+                scratchcard_totals.insert(card_number, 0);
             });
 
             card_and_matches.push((card_number, n_matches));
         }
 
-        for (card, matched) in &card_and_matches {
-            for i in card + 1..matched + card {
-                if let Some(instance) = card_instances.get_mut(&i) {
-                    *instance += 1;
-                    println!("card = {card} card_instance_num = {i} instances = {instance}");
-                } else {
-                    println!("Index `{i}` not found");
+        fn calculate_scratchc(card_num: u32, card_and_matches: &Vec<(u32, u32)>, scratchcard_totals: &mut HashMap<u32, u32>) {
+            let card_repetitions = match card_and_matches.iter().find(|(k, _)| *k == card_num) {
+                Some((_, v)) => v,
+                _ => return
+            };
+
+            for i in (card_num+1)..=(card_num+card_repetitions) {
+                if *card_repetitions == 0 {
+                    let rep = scratchcard_totals.get_mut(&card_num).unwrap();
+                    *rep += 1;
+                    continue;
                 }
+                calculate_scratchc(i, card_and_matches, scratchcard_totals);
+                let rep = scratchcard_totals.get_mut(&i).unwrap();
+                *rep += 1;
+
             }
         }
 
-        println!(" = `{:?}` \n = {:?} ", card_and_matches, card_instances);
+        for (card_num, _) in &card_and_matches {
+            if let Some(value) = scratchcard_totals.get_mut(&card_num) {
+                *value += 1;
+            }
+            calculate_scratchc(*card_num, &card_and_matches, &mut scratchcard_totals);
+        }
+
+        //println!("{:?}, {:?}", card_and_matches, scratchcard_totals);
+
+        let mut total_points = 0;
+        scratchcard_totals.iter().for_each(|(_, v)| total_points += v);
+
+        println!("Total Points = `{total_points}`");
+
     }
 }
 
