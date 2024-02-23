@@ -78,6 +78,7 @@ fn select_day(day: &str, solution: &str, input_content: String) -> Option<()> {
         2 => solutions::Day02::solve(n_solution, input_content),
         3 => solutions::Day03::solve(n_solution, input_content),
         4 => solutions::Day04::solve(n_solution, input_content),
+        5 => solutions::Day05::solve(n_solution, input_content),
         _ => todo!("NEED TO ADD THE DAY IN MAIN.rs you silly!"),
     }
     Some(())

@@ -16,7 +16,7 @@ impl Solution for Day04 {
         let mut total_points = 0;
         for line in input.lines() {
             let card: Vec<_> = line.split_whitespace().collect();
-            let (winning_nums, your_nums) = card.split_at(card_delimitr_pos); //.filter_map(|s| s.parse().ok()).collect();
+            let (winning_nums, your_nums) = card.split_at(card_delimitr_pos);
             let winning_nums: Vec<u32> =
                 winning_nums.iter().filter_map(|s| s.parse().ok()).collect();
             let your_nums: Vec<u32> = your_nums.iter().filter_map(|s| s.parse().ok()).collect();
@@ -69,13 +69,17 @@ impl Solution for Day04 {
             card_and_matches.push((card_number, n_matches));
         }
 
-        fn calculate_scratchc(card_num: u32, card_and_matches: &Vec<(u32, u32)>, scratchcard_totals: &mut HashMap<u32, u32>) {
+        fn calculate_scratchc(
+            card_num: u32,
+            card_and_matches: &Vec<(u32, u32)>,
+            scratchcard_totals: &mut HashMap<u32, u32>,
+        ) {
             let card_repetitions = match card_and_matches.iter().find(|(k, _)| *k == card_num) {
                 Some((_, v)) => v,
-                _ => return
+                _ => return,
             };
 
-            for i in (card_num+1)..=(card_num+card_repetitions) {
+            for i in (card_num + 1)..=(card_num + card_repetitions) {
                 if *card_repetitions == 0 {
                     let rep = scratchcard_totals.get_mut(&card_num).unwrap();
                     *rep += 1;
@@ -84,7 +88,6 @@ impl Solution for Day04 {
                 calculate_scratchc(i, card_and_matches, scratchcard_totals);
                 let rep = scratchcard_totals.get_mut(&i).unwrap();
                 *rep += 1;
-
             }
         }
 
@@ -98,10 +101,11 @@ impl Solution for Day04 {
         //println!("{:?}, {:?}", card_and_matches, scratchcard_totals);
 
         let mut total_points = 0;
-        scratchcard_totals.iter().for_each(|(_, v)| total_points += v);
+        scratchcard_totals
+            .iter()
+            .for_each(|(_, v)| total_points += v);
 
         println!("Total Points = `{total_points}`");
-
     }
 }
 
